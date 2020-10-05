@@ -1,3 +1,5 @@
+> Uptime Website v2 is not a public project!
+
 # Uptime Website v2
 ### Info
 `*` Apache License <br>
