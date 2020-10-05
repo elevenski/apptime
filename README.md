@@ -1,2 +1,14 @@
-# uptime-website-v2
-© Rise Development. (Eleven &amp; Cenap)
+# Uptime Website v2
+### Info
+`*` Apache License <br>
+`*` [Discord](https://discord.gg/V6ukCvm)
+
+
+
+### Apache License
+`-` Open source code is not open to sharing. Necessary Transactions are applied to the person & persons who create the clone.
+
+
+
+### Creators / Developers
+`-` Eleven & Cenap
