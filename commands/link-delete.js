@@ -5,9 +5,9 @@ const db = require('quick.db')
 exports.run = (client, message, args) => {
   let link = args[0]
   let linksahipi = args[1]
-  //  if (message.author.id !== 'Here Owner ID') return;
-  if (message.author.id !== 'Here Owner ID' && message.author.id !== 'Here Owner ID 2') return;
-  //   if (message.author.id !== 'Here Owner ID' && message.author.id !== 'Here Owner ID 2' && message.author.id !== 'Here Owner ID 3') return;
+  //  if (message.author.id !== 'Here Admin ID') return;
+  if (message.author.id !== 'Here Admin ID' && message.author.id !== 'Here Admin ID 2') return;
+  //   if (message.author.id !== 'Here Admin ID' && message.author.id !== 'Here Admin ID 2' && message.author.id !== 'Here Admin ID 3') return;
 if(!link) {
  return message.channel.send("You didn't fill out the link!");
 }
