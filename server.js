@@ -210,10 +210,7 @@ app.get("/p/:userID", (req, res) => {
 });
 
   app.get("/", (req, res) => {
-    renderTemplate(res, req, "error.ejs");
-  });
-    app.get("/error", (req, res) => {
-    renderTemplate(res, req, "error.ejs");
+    renderTemplate(res, req, "index.ejs");
   });
   app.get("/add", checkAuth, (req, res) => {
     renderTemplate(res, req, "add.ejs");
