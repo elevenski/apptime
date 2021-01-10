@@ -11,17 +11,11 @@ const helmet = require("helmet");
 client.login("Here Token");
 let admin = ["admin 1", "admin 2", "admin 3"];
 let verified = ["verified 1", "verified 2", "verified 3"];
-const logs = "786123433838247956";
 client.admin = admin;
 client.verified = verified;
 const md = require("marked");
 
 app.use(express.static("public"));
-const kontrol = require('node-fetch');
-setInterval(() => {
-kontrol("https://lace-button-pulsar.glitch.me")
-console.log(`Bot Tekrar Aktif Edildi`)
-}, 120000)
 
 const request = require("request");
 const url = require("url");
@@ -279,7 +273,7 @@ app.get("/*",(req,res) => {
 })
   const listener = app.listen(process.env.PORT, () => {
   });
-  console.log(`Logined! socioo aktif yarram`);
+  console.log(`Logined!`);
 });
 
 
