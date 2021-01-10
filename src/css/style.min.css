@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.font-quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+.text-discord {
+    color: #738ada;
+}
+.bg-discord {
+    background-color: #738ada;
+}
+.hover\:bg-discord:hover {
+    background-color: #738ada;
+}
+.border-discord {
+    border-color: #738ada;
+}
+.bg-discord-dark-800 {
+    background: #10151c;
+}
+.bg-discord-dark-900 {
+    background: #121315;
+}
+.input-1 {
+    border: 1px solid #1c1e23;
+}
+.input-1:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 135, 197, 0.45);
+    border-color: #a4cafe;
+    border-width: 1px;
+}
+.notify {
+    background:#121216;
+    border-radius: 6px;
+    padding-top: 20px;
+    z-index: 999999999999;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 120px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    max-width: 450px;
+}
+.notify-title {
+    color: white;
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    vertical-align: center;
+}
