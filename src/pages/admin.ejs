@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="css/style.css" rel="stylesheet">
+      <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+      <link rel="icon" href="https://tawk.link/5f5fe184f0e7167d00104894/kb/logo/pmtPq_SQSM.png" type="image/x-icon" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link rel="stylesheet" href="css/style.min.css">
+      <title>Socioo | Free Forever</title>
+      <meta property="og:description" content="Checks the availability of your website in one minute intervals from 30 different locations on 6 continents.">
+      <meta name="description" content="Checks the availability of your website in one minute intervals from 30 different locations on 6 continents.">
+   </head>
+   <body class="text-white" style="background-color:#131a26;">
+      <div class="w-full text-white bg-transparent">
+         <div class="flex flex-col px-8 pt-2 mx-auto md:items-center md:justify-between md:flex-row">
+            <div class="py-2 flex justify-between">
+               <a href="/">
+                  <p class="text-2xl text-white font-quicksand font-medium"><img src="https://cdn.discordapp.com/attachments/723279024050405427/754447394959261817/socioo-text_logo_nobackground.png" width="150" style="background-color:#131a26"></p>
+               </a>
+               <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline">
+               </button>
+            </div>
+            <nav style="z-index: 9999;" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="/status" style="font-size: 16px">Status</a>
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="/discord" style="font-size: 16px">Discord Server</a>
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="https://socioo.tawk.help/" style="font-size: 16px">Help Desk</a>
+               <% if (user) { %>
+               <div class="relative">
+                  <a href="/dashboard">
+                     <button class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg focus:text-white hover:text-white hover: md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none">
+                        <img style="width: 35px;" class="inline-block -ml-2 mr-2 rounded-full -my-1" src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>">
+                        <span style="font-size: 16px">
+                           <%=user.username%>
+                           <text class="text-green-400">#<%=user.discriminator%></text>
+                        </span>
+                     </button>
+                  </a>
+                  <% } else { %>
+                  <a class="flex flex-row bg-gray-800 rounded-md hover:bg-gray-700 px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 focus:outline-none" href="/login" style="font-size: 16px">Login via Discord</a>
+                  <% } %>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <div class="container px-8 mt-1 mb-16 mx-auto w-full pt-16 pb-16">
+         <div class="md:grid md:grid-cols-2">
+            <div class="mt-2">
+               <p class="font-quicksand text-3xl text-white">Welcome <a class="text-green-400"><%=user.username%></a>!</p>
+            </div>
+         </div>
+         <div class="border-b border-gray-800 mt-2"></div>
+         <div class="md:grid md:grid-cols-3 mt-1">
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-link"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        Added Monitors
+                     </p>
+                     <p class="text-lg font-semibold text-green-400">
+                        <%= db.get("linkler").length %>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-sign-in"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        Total Login
+                     </p>
+                     <p class="text-lg font-semibold text-green-400">
+                        <%=db.get("girisler")%>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-table-tennis"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        System Ping
+                     </p>
+                     <p class="text-lg font-semibold text-green-400">
+                        <%=Math.round(bot.ping)%>ms
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="ml-auto mt-6">
+            &#160
+            <a href="/admin/links"><button class="focus:outline-none font-quicksand px-6 py-3 bg-discord transform transition duration-400 hover:bg-discord" style="border-radius:9px"><i class="fa fa-link"></i> All Links</button></a>
+         </div>
+      </div>
+      </div>
+      <style>
+         .flex-row{
+         background-color:#1b2435
+         }
+         .flex-row:hover{
+         background-color:#263248
+         }
+         ::-webkit-scrollbar {
+         -webkit-appearance: none;
+         width: 7px;
+         }
+         ::-webkit-scrollbar-thumb {
+         border-radius: 4px;
+         background-color: #1b2435;
+         -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+         }
+      </style>
+   </body>
+</html>
