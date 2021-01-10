@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/css/style.css" rel="stylesheet">
+      <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+      <link rel="icon" href="https://tawk.link/5f5fe184f0e7167d00104894/kb/logo/pmtPq_SQSM.png" type="image/x-icon" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link rel="stylesheet" href="/css/style.min.css">
+      <title>Socioo | Free Forever</title>
+      <meta property="og:description" content="Checks the availability of your website in one minute intervals from 30 different locations on 6 continents.">
+      <meta name="description" content="Checks the availability of your website in one minute intervals from 30 different locations on 6 continents.">
+   </head>
+   <body class="text-white" style="background-color:#131a26;">
+      <div class="w-full text-white bg-transparent">
+         <div class="flex flex-col px-8 pt-2 mx-auto md:items-center md:justify-between md:flex-row">
+            <div class="py-2 flex justify-between">
+               <a href="/">
+                  <p class="text-2xl text-white font-quicksand font-medium"><img src="https://cdn.discordapp.com/attachments/723279024050405427/754447394959261817/socioo-text_logo_nobackground.png" width="150" style="background-color:#131a26"></p>
+               </a>
+               <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline">
+               </button>
+            </div>
+            <nav style="z-index: 9999;" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="/status" style="font-size: 16px">Status</a>
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="/discord" style="font-size: 16px">Discord Server</a>
+               <a class="px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 hover:text-green-400 focus:outline-none" href="https://socioo.tawk.help/" style="font-size: 16px">Help Desk</a>
+               <% if (user) { %>
+               <div class="relative">
+                  <a href="/dashboard">
+                     <button class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg focus:text-white hover:text-white hover: md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none">
+                        <img style="width: 35px;" class="inline-block -ml-2 mr-2 rounded-full -my-1" src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>">
+                        <span style="font-size: 16px">
+                           <%=user.username%>
+                           <text class="text-green-400">#<%=user.discriminator%></text>
+                        </span>
+                     </button>
+                  </a>
+                  <% } else { %>
+                  <a class="flex flex-row bg-gray-800 rounded-md hover:bg-gray-700 px-4 py-2 mt-2 text-sm font-semibold transition duraton-400 text-white md:mt-0 focus:outline-none" href="/login" style="font-size: 16px">Login via Discord</a>
+                  <% } %>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <div class="container px-8 mt-1 mb-16 mx-auto w-full pt-16 pb-16">
+         <div class="md:grid md:grid-cols-2">
+            <div class="mt-2">
+               <p class="font-quicksand text-3xl text-white">Dashboard for <a class="text-green-400"><%=user.email%></a></p>
+            </div>
+            <div class="ml-auto mt-2">
+               <a href="/add"><button class="focus:outline-none font-quicksand px-6 py-3 bg rounded-full transform transition duration-400 hover:bg-green-400"><i class="fal fa-plus"></i> Add Monitor</button></a>
+               &#160
+               <% if(bot.admin.includes(user.id) === true) { %>
+               <a href="/admin"><button class="focus:outline-none font-quicksand px-6 py-3 bg rounded-full transform transition duration-400 hover:bg-green-400"><i class="fal fa-user-alt"></i> Admin Panel</button></a>
+               &#160
+               <% } %>
+               <a href="/logout"><button class="focus:outline-none font-quicksand px-6 py-3 bg-red-500 rounded-full transform transition duration-400 hover:bg-red-600"><i class="fal fa-sign-out-alt"></i> Logout</button></a>
+            </div>
+         </div>
+         <div class="border-b border-gray-800 mt-2"></div>
+         <div class="md:grid md:grid-cols-3 mt-1">
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-link"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        Added Monitors
+                     </p>
+                     <p class="text-lg font-semibold text-green-400">
+                        <%= (db.get("linkler").filter(x => x.owner === user.id).length) || 0%>/10
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-badge-check"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        Account Verification
+                     </p>
+                     <p class="text-lg font-semibold text-red-400">
+                        <% if(bot.verified.includes(user.id) === true) { %>
+                        <a class="text-green-400">Verified</a>
+                        <% } else {%>
+                        Not Verified
+                        <% } %>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="mt-10 min-w-0 shadow-xs overflow-hidden" style="background-color:#1b2435">
+               <div class="p-4 flex items-center">
+                  <div class="p-3 rounded-full text-white text-4xl mr-4">
+                     <i class="fal fa-id-card"></i>
+                  </div>
+                  <div>
+                     <p class="mb-2 text-sm font-medium text-white" style="font-size: 20px">
+                        Staff Account
+                     </p>
+                     <p class="text-lg font-semibold text-red-400">
+                        <% if(bot.admin.includes(user.id) === true) { %>
+                        <a class="text-green-400">Yes</a>
+                        <% } else {%>
+                        No
+                        <% } %>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <br>
+         <div class="md:grid mt-10">
+            <div class="col-span-2">
+               <p class="font-quicksand text-3xl text-white">Monitors</p>
+               <br>
+               <%if(db.get("linkler").filter(x => x.owner === user.id)) {%>
+               <%if(db.get("linkler").filter(x => x.owner === user.id)[0]) {%>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#1</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[0]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[0]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[1]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#2</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[1]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[1]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[2]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435;">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#3</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[2]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[2]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[3]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#4</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[3]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[3]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[4]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#5</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[4]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[4]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[5]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#6</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[5]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[5]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[6]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#7</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[6]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[6]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[7]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#8</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[7]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[7]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[8]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#9</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[8]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[8]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%} if(db.get("linkler").filter(x => x.owner === user.id)[9]) {%>
+               <br>
+               <div class="bg-discord-dark-800 hover:cursor-pointer hover:transform px-10 py-5" style="background-color:#1b2435">
+                  <div class="md:flex">
+                     <i class="md:-ml-5 rounded-lg fal fa-desktop" style="font-size: 100px;"></i>
+                     <div class="md:ml-7 mt-1">
+                        <p class="font-quicksand mt-2 text-4xl text-white">#10</p>
+                        <p class="font-quicksand mt-2 text-xl text-gray-500"><a style="color:#efefef">URL:</a> <%=(db.get("linkler").filter(x => x.owner === user.id)[9]).url ||"Slot"%> &nbsp; <a style="color:#efefef">Last Uptime:</a> Now</p>
+                     </div>
+                     <div class="ml-auto my-auto">
+                        <a target="_blank" href="<%=(db.get("linkler").filter(x => x.owner === user.id)[9]).url ||"Slot"%>">
+                        <i class="fa fa-external-link text-gray-500 text-3xl hover:text-white" title="Open link in new tab"></i>
+                        </a>
+                        &nbsp;
+                        <a target="_blank" href="https://socioo.tawk.help/article/how-do-i-delete-the-monitor">
+                        <i class="fa fa-trash-alt text-gray-500 text-3xl hover:text-white" title="Learn how to remove the monitor"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <%}%>
+               <%} %>
+               <%if(!db.get("linkler").filter(x => x.owner === user.id)[0]) {%>
+               <p class="text-2xl mt-2 text-gray-500 font-quicksand">You have no monitor registered in the system.</p>
+               <%}%>
+            </div>
+         </div>
+      </div>
+      <style>
+         .flex-row{
+         background-color:#1b2435
+         }
+         .flex-row:hover{
+         background-color:#263248
+         }
+         ::-webkit-scrollbar {
+         -webkit-appearance: none;
+         width: 7px;
+         }
+         ::-webkit-scrollbar-thumb {
+         border-radius: 4px;
+         background-color: #1b2435;
+         -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+         }
+      </style>
+   </body>
+</html>
