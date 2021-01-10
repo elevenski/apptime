@@ -3,14 +3,14 @@ const moment = require("moment")
 const db = require("quick.db");
 const discord = require("discord.js");
 const client = new discord.Client({ disableEveryone: true });
-client.login("NzM3OTU3NjE2MDQ2NTcxNTIw.XyE6lg.Opi4mwd3jFYWdgymAQoQOf_7J0A");
 const fetch = require("node-fetch");
 const fs = require("fs");
 const express = require("express");
 const app = express();
 const helmet = require("helmet");
-let admin = ["689169122604744833", "693501893778997290", "729795891111919667"];
-let verified = ["689169122604744833", "693501893778997290", "729795891111919667"];
+client.login("Here Token");
+let admin = ["admin 1", "admin 2", "admin 3"];
+let verified = ["verified 1", "verified 2", "verified 3"];
 const logs = "786123433838247956";
 client.admin = admin;
 client.verified = verified;
@@ -71,7 +71,7 @@ setInterval(() => {
   });
   let zaman = new Date();
   console.log("Pong! Requests sent")
-   // client.user.setActivity(`❄️ beta.socioo.tk ❄️ Ping : ${client.ping} Links : ${db.get("linkler").length}`);
+  client.user.setActivity(`Ping : ${client.ping} Links : ${db.get("linkler").length}`);
   
   db.set("config.uptime.the-last",moment().format('MMMM Do,h:mm:ss a'))
 }, 65000);
@@ -84,78 +84,23 @@ client.on("ready", () => {
 
 
 
-client.on("message", (message) => {
-  
-  if(message.channel.id === "789779849740419133") {
-    if(message.author.bot) return false;
-    
-
-    const server = client.guilds.get("751404001614102568") //basvuru
-   const authRole = server.roles.get("789782813192618024")
-   
-message.member.addRole(authRole)
-      message.reply("Başvurunuz alınmıştır.")
-  }
-  });
-
-
-client.on("message", (message) => {
-  
-  if(message.channel.id === "785888221463838771") {
-    if(message.author.bot) return false;
-    
-
-    const server = client.guilds.get("751404001614102568")
-   const authRole = server.roles.get("789790452190019584") //yorum
-   message.member.addRole(authRole)
-message.react("783588603397144578")
-  }
-  });
-
-
-
-
-client.on("guildMemberRemove", async(member) => {
-  let rolver = await db.fetch(`cikisrol.${member.guild.id}`)
-  if(!rolver) return
-  let rol = [];
-  member.roles.forEach(a => {
-    rol.push(a.id)
-  })
-  db.set(`uyecikisrol.${member.user.id}`, rol)
-  db.set(`uyecikisisim.${member.user.id}`, member.nickname)
-})
-
-client.on("guildMemberAdd", async(member) => {
-  let rolver = await db.fetch(`cikisrol.${member.guild.id}`)
-  if(!rolver) return
-  let uyecikis = await db.fetch(`uyecikisrol.${member.user.id}`)
-  if(!uyecikis) return
-  let isim = await db.fetch(`uyecikisisim.${member.user.id}`)
-  try {
-    await uyecikis.forEach(x => member.addRole(member.guild.roles.get(x).id))
-    await member.setNickname(isim)
-    db.delete(`uyecikisrol.${member.user.id}`)
-    db.delete(`uyecikisisim.${member.user.id}`)
-  } catch(err) { }
-})
 client.on("ready", () => {
   
 
   passport.use(
     new Strategy(
       {
-        clientID: "737957616046571520",
-        clientSecret: "uekVVj0R-9dohGybY-bfxjz9mmgMWTFd",
-        callbackURL: "https://ddos.socioo.cf/",
+        clientID: "Here Client ID",
+        clientSecret: "Here Client Secret",
+        callbackURL: "Here Callback URL",
         scope: ["identify", "guilds.join", "email"]
       },
       (accessToken, refreshToken, profile, done) => {
         process.nextTick(() => done(null, profile));
         let id = profile.id;
      
-     if(!client.guilds.get('751404001614102568').members.get(profile.id)) {
-      client.guilds.get('751404001614102568').addMember(profile.id, { "accessToken": accessToken}).catch(console.error)
+     if(!client.guilds.get('Here Server ID').members.get(profile.id)) {
+      client.guilds.get('Here Server ID').addMember(profile.id, { "accessToken": accessToken}).catch(console.error)
     }
       }
     )
@@ -231,7 +176,7 @@ linkss = linkA
 
   app.get("/autherror", (req, res) => {
     res.send(
-      "Bir sorun oluştu discord sunucumuza gelip yardım alabilirsin. https://beta.socioo.tk/discord"
+      "There was a problem, you can come to our discord server and get help. https://discord.gg/T4BMtSu"
     );
   });
 
@@ -285,11 +230,8 @@ app.get("/p/:userID", (req, res) => {
   app.get("/status", (req, res) => {
     renderTemplate(res, req, "status.ejs");
   });
-app.get('/sage', function (req, res) {  //silme
-  res.redirect('https://discord.com/oauth2/authorize?client_id=712081231424127037&scope=bot&permissions=318635511')
-  });
 app.get('/discord', function (req, res) {
-  res.redirect('https://discord.gg/83CYDRDtH6')
+  res.redirect('https://discord.gg/T4BMtSu')
   });
       app.get("/dashboard", checkAuth, (req, res) => {
     renderTemplate(res, req, "dashboard.ejs");
@@ -323,8 +265,8 @@ app.get('/discord', function (req, res) {
       //console.log(req.user.id)
       db.add(`user.${req.user.id}.sinir`,1)
       
-       client.channels.get("788417421433765898").send(`<@!${req.user.id}> added monitor. ${link}`)    
-       client.channels.get("778930947810525235").send(`<@!${req.user.id}> added monitor. ${db.get("linkler").filter(x => x.owner === req.user.id).length}/10`)
+       client.channels.get("Here Staff Log Channel ID").send(`<@!${req.user.id}> added monitor. ${link}`)    
+       client.channels.get("Here General Log Channel ID").send(`<@!${req.user.id}> added monitor. ${db.get("linkler").filter(x => x.owner === req.user.id).length}/10`)
       return res.redirect('/dashboard')
 
     }
