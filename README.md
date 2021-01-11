@@ -1,13 +1,11 @@
 # Uptime Website v2
 ### Info
-`*` Apache License <br>
-`*` [Discord](https://discord.gg/T4BMtSu)
-
-### Apache License
-`-` Open source code is not open to sharing. Necessary Transactions are applied to the person & persons who create the clone.
+* Apache License `Open source code is not open to sharing. Necessary Transactions are applied to the person & persons who create the clone.`
+* [Discord](https://discord.gg/T4BMtSu)
 
 ### Creators / Developers
-`-` Eleven & Cenap
+👤 Eleven `Project Leader, Website & Theme & Front-end Developer `
+👤 Cenap `System & Back-end Developer`
 
 ### Fetaures
 1) New Theme.
