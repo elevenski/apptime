@@ -1,6 +1,5 @@
 # Uptime Website v2
-### Info
-* Apache License `Open source code is not open to sharing. Necessary Transactions are applied to the person & persons who create the clone.`
+### Contact
 * [Discord](https://discord.gg/T4BMtSu)
 
 ### Creators / Developers
