@@ -3,9 +3,9 @@
 * [Discord](https://discord.gg/T4BMtSu)
 
 ### Creators / Developers
-👤 Eleven `Project Leader, Website & Theme & Front-end Developer `
+👤 Eleven
 <br>
-👤 Cenap `System & Back-end Developer`
+👤 Cenap
 
 ### Fetaures
 1) New Theme.
