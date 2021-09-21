@@ -3,7 +3,7 @@
 </p>
 
 ## Description
-⚡ Open-source Free Monitoring Service (v4-end).
+⚡ Advanced Open-source Free Monitoring Service.
 
 ## Programming Languages
 `EJS`, `JavaScript` & `CSS`
