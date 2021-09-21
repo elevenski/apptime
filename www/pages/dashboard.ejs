@@ -1,0 +1,106 @@
+<title>Dashboard — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">Dashboard</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Last Announcements</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+                      <div class="notice d-flex bg-light-info rounded border-info border border-dashed rounded p-6 mb-2">
+                        <span class="svg-icon svg-icon-2tx svg-icon-info me-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                              <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1" />
+                              <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1" />
+                           </svg>
+                        </span>
+                        <div class="d-flex flex-stack flex-grow-1">
+                           <div class="fw-bold">
+                              <h4 class="text-gray-800 fw-bolder">Apptime Desktop Beta is now out.</h4>
+                              <div class="fs-6 text-gray-600"><a href="https://desktop.apptime.tech" target="_blank">Click and go to Desktop Website</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed rounded p-6 mt-1 mb-1">
+                        <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                              <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1" />
+                              <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1" />
+                           </svg>
+                        </span>
+                        <div class="d-flex flex-stack flex-grow-1">
+                           <div class="fw-bold">
+                              <h4 class="text-gray-800 fw-bolder"><%=ly.fetch(`announcements.description`) || "No Announcement Yet"%></h4>
+                              <div class="fs-6 text-gray-600"><%=ly.fetch(`announcements.date`) || "Jun 4, 1970 4:48 PM"%>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connecteds" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accountss" aria-expanded="true" aria-controls="kt_account_connected_accountss">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Your Stats</h3>
+                           </div>
+                           <div class="card-toolbar">
+													<ul class="nav nav-tabs nav-line-tabs nav-stretch fs-4 border-0 fw-bold" id="kt_security_summary_tabs">
+														<li class="nav-item">
+															<a class="nav-link text-active-gray-800 active" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_security_summary_tab_pane_hourss">All Times</a>
+														</li>
+													</ul>
+												</div>
+                        </div>
+                        <div id="kt_account_connected_accountss" class="collapse show">
+                           <div class="card-body border-top pt-7 pb-0 px-0">
+                     <div class="tab-content">
+													<div class="tab-pane fade active show" id="kt_security_summary_tab_pane_hours" role="tabpanel">
+														<div class="row p-0 mb-5 px-9">
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-success d-block">Connected</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%= (ly.fetch(`logins.${user.id}`)) || "0"%></span>
+																</div>
+															</div>
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-primary d-block">Currently Monitors</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%= (ly.fetch("linkler").filter(x => x.owner === user.id).length) || "0"%></span>
+																</div>
+															</div>
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-danger d-block">Total Requests</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%= (ly.fetch(`treq.${user.id}`)) || "0"%></span>
+																</div>
+															</div>
+														</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

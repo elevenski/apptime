@@ -1,0 +1,66 @@
+<title>Admin Panel — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">Admin Panel</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">All Stats</h3>
+                           </div>
+                           <div class="card-toolbar">
+													<ul class="nav nav-tabs nav-line-tabs nav-stretch fs-4 border-0 fw-bold" id="kt_security_summary_tabs">
+														<li class="nav-item">
+															<a class="nav-link text-active-gray-800 active" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_security_summary_tab_pane_hourss">All Times</a>
+														</li>
+													</ul>
+												</div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+<div class="tab-content">
+													<div class="tab-pane fade active show" id="kt_security_summary_tab_pane_hours" role="tabpanel">
+														<div class="row p-0 mb-5 px-9">
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-success d-block">Connected</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%= (ly.fetch(`logins`)) || "0"%></span>
+																</div>
+															</div>
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-primary d-block">Monitors</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%=(ly.fetch("linkler").length) || "0"%>/<%=(ly.fetch("pointID")) || "0"%></span>
+																</div>
+															</div>
+															<div class="col">
+																<div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+																	<span class="fs-4 fw-bold text-danger d-block">Total Requests</span>
+																	<span class="fs-2hx fw-boldest text-gray-800" data-kt-countup="true" data-kt-countup-value="0"><%= (ly.fetch(`treq`)) || "0"%></span>
+																</div>
+															</div>
+														</div>
+                        </div>
+                     </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

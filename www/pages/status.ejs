@@ -1,0 +1,106 @@
+<title>Status — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">Status</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Apptime</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+                              <div class="d-flex flex-stack px-3 py-2 ms-n4 mb-3">
+                                 <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-35px me-4">
+                                       <span class="symbol-label">
+                                       </span>
+                                    </div>
+                                    <div class="ps-1 mb-1">
+                                       <as class="fs-5 text-gray-800 text-hover fw-boldest">General</as>
+                                       <div class="text-gray-400 fw-bold">All Systems</div>
+                                    </div>
+                                 </div>
+                                 <%if(bot.ws.ping > 300) {%>
+                                    <span style="color:#f1416c" class="fs-7 fw-boldest">Low Performance</span>
+                                    <%} else {%>
+                                    <span style="color:#50cd89" class="fs-7 fw-boldest">Operational</span>
+                                    <% } %>
+                              </div>
+                              <div class="d-flex flex-stack px-3 py-2 ms-n4 mb-3">
+                                 <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-35px me-4">
+                                       <span class="symbol-label">
+                                       </span>
+                                    </div>
+                                    <div class="ps-1 mb-1">
+                                       <as class="fs-5 text-gray-800 text-hover fw-boldest">Monitoring</as>
+                                       <div class="text-gray-400 fw-bold">Monitoring Service</div>
+                                    </div>
+                                 </div>
+                                 <%if(bot.ws.ping > 300) {%>
+                                    <span style="color:#f1416c" class="fs-7 fw-boldest">Low Performance</span>
+                                    <%} else {%>
+                                    <span style="color:#50cd89" class="fs-7 fw-boldest">Operational</span>
+                                    <% } %>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connecteds" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accountss" aria-expanded="true" aria-controls="kt_account_connected_accountss">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Third-Party</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accountss" class="collapse show">
+                           <div class="card-body border-top p-9">
+												<div class="d-flex flex-stack px-3 py-2 ms-n4 mb-3">
+													<div class="d-flex align-items-center">
+														<div class="symbol symbol-35px me-4">
+															<span class="symbol-label">
+															</span>
+														</div>
+														<div class="ps-1 mb-1">
+															<as class="fs-5 text-gray-800 text-hover fw-boldest">Google Cloud</as>
+															<div class="text-gray-400 fw-bold">Server Infrastructure Service</div>
+														</div>
+													</div>
+													<span style="color:#50cd89" class="fs-7 fw-boldest">Operational</span>
+												</div>
+												<div class="d-flex flex-stack px-3 py-2 ms-n4 mb-0">
+													<div class="d-flex align-items-center">
+														<div class="symbol symbol-35px me-4">
+															<span class="symbol-label">
+															</span>
+														</div>
+														<div class="ps-1 mb-1">
+															<as class="fs-5 text-gray-800 text-hover fw-boldest">Cloudflare</as>
+															<div class="text-gray-400 fw-bold">DDoS Blocker</div>
+														</div>
+													</div>
+													<span style="color:#50cd89" class="fs-7 fw-boldest">Operational</span>
+												</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

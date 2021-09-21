@@ -1,0 +1,51 @@
+<title>New Monitor — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">New Monitor</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Unsuccess</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+                     <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed rounded p-6 mb-1">
+                        <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                              <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1" />
+                              <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1" />
+                           </svg>
+                        </span>
+                        <div class="d-flex flex-stack flex-grow-1">
+                           <div class="fw-bold">
+                              <h4 class="text-gray-800 fw-bolder">Monitor could not be added due to an error.</h4>
+                              <div class="fs-6 text-gray-600"><a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_create_api_key">Try Again</a> or Get In Touch. 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

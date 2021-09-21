@@ -1,0 +1,59 @@
+<title>About — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">About</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Why Apptime?</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+                         <div class="row">
+											<div class="col-md-6 pb-10 pb-lg-0">
+												<h2 class="fw-boldest">Secure</h2>
+												<p class="fs-4 fw-bold text-gray-600 py-2">It guarantees the protection of your information and is not sold or shared with third party companies & companies.
+                                                    If you still want to feel safe, you can delete your information from the <a href="/account">Account</a> page yourself.</p>
+                                                    <a href="/legal/all" target="_blank" class="btn btn-light fw-boldest">View Legal Agreements</a>
+                                            </div>
+											<div class="col-md-6">
+												<h2 class="fw-boldest">Quick</h2>
+												<p class="fs-4 fw-bold text-gray-600 py-2">Requests are reduced in size for faster browsing. In this way, you can browse the website faster and send a request. We are working day by day to improve the speed of the site.</p>
+											</div>
+										</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connecteds" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accountss" aria-expanded="true" aria-controls="kt_account_connected_accountss">
+                           <div class="card-title m-0">
+                            <h3 class="fw-boldest m-0">Example Video by <a href="https://www.youtube.com/channel/UCEz62e3PmjcghMTU1O0U6EQ" target="_blank">Cw Khan</a></h3>
+                        </div>
+                        </div>
+                        <div id="kt_account_connected_accountss" class="collapse show">
+                           <div class="card-body border-top p-9">
+                            <iframe width="100%" height="300px" src="https://www.youtube.com/embed/O24Q02LpFl4"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

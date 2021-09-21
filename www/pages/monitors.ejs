@@ -1,0 +1,157 @@
+<title>Monitors — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">Monitors</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card" id="kt_account_settings_deactivate" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">My Monitors</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_deactivate" class="collapse show">
+                           <form>
+                              <div class="card-body border-top p-9">
+<div class="row">
+<%if(ly.fetch("linkler").filter(x => x.owner === user.id)) {%>
+<%if(ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>?width=100&height=100" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[1]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[2]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[3]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[4]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[5]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[6]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[7]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[8]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[9]) {%>
+<div class="col-md-4 col-lg-2 col-xl-2">
+<a href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).pointID ||"#-error-"%>">
+<div style="border-radius:5px" class="mcard card text-center alert-dismissible fade show alert p-0 card-hover" role="alert">
+<div class="p-2 d-block mt-3">
+<img width="100" height="100" style="object-fit: cover;background-color:#0067f4;border-radius:5px;width:100px;height:100px" draggable="false" src="<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="m" class="img-fluid">
+<h5 style="font-weight:500" class="fw-boldest card-title mt-3"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).name ||"-error-"%></h5>
+</div>
+</div>
+</a>
+</div>
+<%}%>
+<%}%>
+<%if(!ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<p>
+You don't have any Monitors.
+</p>
+<%}%>
+                </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "cookie-session": "^1.4.0",
+    "d3": "^6.7.0",
+    "desandro-matches-selector": "^2.0.2",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "ev-emitter": "^2.1.0",
+    "express": "4.16.4",
+    "express-session": "^1.17.1",
+    "fizzy-ui-utils": "^3.0.0",
+    "fs-extra": "^9.1.0",
+    "fs-path": "0.0.25",
+    "get-size": "^2.0.3",
+    "helmet": "^3.23.3",
+    "helms": "^1.2.0",
+    "humanize-duration": "^3.25.1",
+    "install": "^0.13.0",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.6.0",
+    "level-session-store": "^2.2.0",
+    "marked": "^1.1.1",
+    "masonry-layout": "^4.2.2",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "node-fetch": "^2.6.0",
+    "npm": "^7.8.0",
+    "os": "^0.1.1",
+    "outlayer": "^2.1.1",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-strategy": "^1.0.0",
+    "path": "^0.12.7",
+    "popper.js": "^1.16.1",
+    "query-string": "^7.0.0",
+    "request": "^2.88.2",
+    "url": "^0.11.0",
+    "uuid": "^8.3.2",
+    "wio.db": "https://github.com/LegendaryEmoji/old-wio.db"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "license": "MIT"
+}

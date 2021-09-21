@@ -1,0 +1,100 @@
+<title>Partners — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">Partners</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Bots</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+								<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-9">
+
+									<div class="col-md-4">
+										<div style="cursor:pointer" onClick="window.open('https://automodbot.com', '_blank');" class="mcard card card-flush h-md-100">
+											<div class="card-header">
+												<div class="card-title">
+													<h2>AutoMod</h2>
+												</div>
+											</div>
+											<div style="margin-top:-18px" class="card-body pt-1">
+												<div class="d-flex flex-column text-gray-600">
+													<div class="d-flex align-items-center py-2">
+													 I'm multi purpose bot by cwkhan</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+                  </div>
+                           </div>
+                        </div>
+                     </div>
+                      <div class="card mb-5 mb-xl-10" id="kt_account_settings_connected" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Communities</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_connected_accounts" class="collapse show">
+                           <div class="card-body border-top p-9">
+								<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-9">
+
+									<div class="col-md-4">
+										<div style="cursor:pointer" onClick="window.open('https://discord.gg/HWjPAAs9d3', '_blank');" class="mcard card card-flush h-md-100">
+											<div class="card-header">
+												<div class="card-title">
+													<h2>Eleven's Base</h2>
+												</div>
+											</div>
+											<div style="margin-top:-18px" class="card-body pt-1">
+												<div class="d-flex flex-column text-gray-600">
+													<div class="d-flex align-items-center py-2">
+													 Development Community.</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+                  <div class="col-md-4">
+										<div style="cursor:pointer" onClick="window.open('https://discord.gg/jJRKdyNQgT', '_blank');" class="mcard card card-flush h-md-100">
+											<div class="card-header">
+												<div class="card-title">
+													<h2>Cw Khan</h2>
+												</div>
+											</div>
+											<div style="margin-top:-18px" class="card-body pt-1">
+												<div class="d-flex flex-column text-gray-600">
+													<div class="d-flex align-items-center py-2">
+													 A community of endeavouring developers, blazed up by CwKhan, Empowering new developers with OSS and discord bot projects</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+                  </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

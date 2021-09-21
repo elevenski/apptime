@@ -1,0 +1,30 @@
+<title>Legal Agreements — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="main">
+         <center>
+         <a href="/"><img style="float:center;margin-top:10px;margin-bottom:-22px" width="200" src="https://i.ibb.co/HptRZvB/Apptime-new-Branding-delta-grow.png"></a>
+         </center>
+         <div style="border-radius:6px" class="card">
+            <div class="header">
+               <h1 style="font-weight:900;">Legal Agreements</h1>
+               <p>
+                  <select id="region-select" class="form-select form-select-solid" data-control="select2" data-placeholder="GDPR">
+                    <option data-url="https://www.freeprivacypolicy.com/live/8c233c6b-d35b-478e-80f9-31fdd80e471d">GDPR</option>
+                     <option data-url="https://www.freeprivacypolicy.com/live/5eeb3fd2-188a-4eb0-90b1-86d340cdafb0">Privacy Policy</option>
+                     <option data-url="https://www.freeprivacypolicy.com/live/d8ffe202-7115-4cbe-889a-c6255efd13a9">Terms of Service</option>
+                     <option data-url="https://www.freeprivacypolicy.com/live/05e3751e-80f5-4efd-8ff6-cebb18b82ab8">Disclaimer</option>
+                </select>
+               </p>
+            </div>
+            <div class="terms"><iframe src="https://www.freeprivacypolicy.com/live/8c233c6b-d35b-478e-80f9-31fdd80e471d" id="agreement"></iframe></div>
+         </div>
+         <script>document.getElementById('region-select').addEventListener('change', function(e) {var target = e.target; document.getElementById('agreement').setAttribute('src', target.options[target.selectedIndex].getAttribute('data-url'));});</script>
+         <style>body,html{width:100%;height:100%;margin:0;min-width:320px;padding:0}body{background-color:#f5f8fa;color:#3c4043}.main{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin:0 auto;width:100%;height:100%;max-width:764px}.footer{font-family:Roboto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1;letter-spacing:0;-webkit-box-flex:0;-webkit-flex:0;-moz-box-flex:0;-ms-flex:0;flex:0;color:#5f6368;margin:32px 16px 16px;text-align:center}.footer>*{margin:0 8px}.footer a{color:#5f6368;text-decoration:none}.footer a:hover{text-decoration:underline}.bg,.top{position:absolute;width:100%;height:288px;left:0}.top{overflow:auto}.top .logo{float:left;min-width:300px;width:30px;background:url('https://i.ibb.co/HptRZvB/Apptime-new-Branding-delta-grow.png') no-repeat 0 0;padding-left:26px}.help a{color:#3c4043;text-decoration:none}.help-top{margin:36px 36px 0 0}.help-bottom{display:none;margin:16px 36px 16px 0}.bg{box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2)}@media screen and (max-width:1350px){.top{-webkit-box-flex:0;-webkit-flex-grow:0;-moz-box-flex:0;-ms-flex-positive:0;flex-grow:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;position:relative;height:auto}.bg{display:none}}.card{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1;background-color:#fff;margin:32px 8px 0;padding:24px;z-index:1;min-height:350px}.card h1{font-size:24px;line-height:32px;-moz-osx-font-smoothing:grayscale}.card h1,.card p{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:400}.card p{font-size:14px;line-height:24px;letter-spacing:0}.header{-webkit-box-flex:0;-webkit-flex:0;-moz-box-flex:0;-ms-flex:0;flex:0}.terms{-webkit-overflow-scrolling:touch;border:1px solid #f5f8fa;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1;overflow:auto;position:relative}.terms iframe{-webkit-overflow-scrolling:touch;border:0;height:100%;position:absolute;width:100%}.footer{clear:both}@media screen and (max-width:520px){.main{display:block!important}.help-top{display:none}.help-bottom{display:block}.terms{min-height:350px}}
+      </style>
+         <div class="footer">
+             <span>Copyright © 2020 - 2021 Aventur SAS</span>
+             <a href="/">Go Homepage</a>
+            </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,108 @@
+<title>View Monitor — Apptime</title>
+<%- include('parts/head', {bot, user, path}) %>
+      <div class="d-flex flex-column flex-root">
+         <div class="page d-flex flex-row flex-column-fluid">
+<%- include('parts/aside', {bot, user, path}) %>
+               <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+                  <div class="toolbar" id="kt_toolbar">
+                     <div class="container-fluid d-flex flex-stack flex-wrap flex-sm-nowrap">
+                        <div class="d-flex flex-column align-items-start justify-content-center flex-wrap me-2">
+                           <h1 class="text-dark fw-bolder my-1 fs-2">View Monitor</h1>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container">
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_overview" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_overview">
+                           <div class="card-title">
+                              <h3 class="fw-boldest m-0">Overview</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_overview" class="collapse show">
+                           <div class="card-body border-top p-9">
+                              <div class="d-flex align-items-start flex-wrap">
+                                 <div class="d-flex flex-wrap">
+                                    <div class="symbol symbol-125px mb-7 me-7 position-relative">
+                                       <img draggable="false" style="object-fit: cover;background-color:#0067f4;" draggable="false" src="<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].image || "https://i.ibb.co/HBJRCCq/quiestion-gray.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/HBJRCCq/quiestion-gray.png'" alt="image" />
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                       <div class="fs-2 fw-boldest mb-1"><%=ly.fetch("linkler").filter(x => x.pointID == link)[0].name%></div>
+                                       <a style="pointer-events:none" class="mt-1 fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-fingerprint" style="margin-right:5px"></i> <%=ly.fetch("linkler").filter(x => x.pointID == link)[0].pointID%></a>
+                                       <a style="pointer-events:none" class="fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-link" style="margin-right:5px"></i> <%=ly.fetch("linkler").filter(x => x.pointID == link)[0].url%></a>
+                                       <a style="pointer-events:none" class="mt-1 fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-edit" style="margin-right:5px"></i> <%=ly.fetch("linkler").filter(x => x.pointID == link)[0].editedAt || "-"%></a>
+                                    </div>
+                                 </div>
+                                 <a href="/monitors" class="btn btn-primary ms-auto mb-7">Return Monitors</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card mb-5 mb-xl-10" id="kt_account_settings_info" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_basic_info" aria-expanded="true" aria-controls="kt_account_basic_info">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Edit Monitor</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_basic_info" class="collapse show">
+                           <form method="POST" action="/monitors/edit/<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].pointID%>">
+                              <div class="card-body border-top p-9">
+                                 <div class="row mb-6">
+                                    <label class="col-lg-4 col-form-label required fw-bold fs-6">Name</label>
+                                    <div class="col-lg-8 fv-row">
+                                       <input autocomplete="off" type="text" type="text" minLength="4" maxLength="25" name="linkname" id="linkname" placeholder="Asuna" class="form-control form-control-lg form-control-solid" required="" value='<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].name%>' />
+                                    </div>
+                                 </div>
+                                 <div class="row mb-6">
+                                    <label class="col-lg-4 col-form-label fw-bold fs-6">Image</label>
+                                    <div class="col-lg-8 fv-row">
+                                       <% if(!ly.fetch("linkler").filter(x => x.pointID == link)[0].image) { %>
+                                       <input autocomplete="off" type="url" name="linkimage" id="linkimage" placeholder="https://i.imgur.com/123" class="form-control form-control-lg form-control-solid" />
+                                       <% } else {%>
+                                       <input autocomplete="off" type="url" name="linkimage" id="linkimage" value="<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].image%>" class="form-control form-control-lg form-control-solid" />
+                                       <% } %>
+                                    </div>
+                                 </div>
+                                 <div class="row mb-0">
+                                    <label class="col-lg-4 col-form-label required fw-bold fs-6">URL</label>
+                                    <div class="col-lg-8 fv-row">
+                                       <input autocomplete="off" type="url" name="linkk" id="linkk" value="<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].url%>" class="form-control form-control-lg form-control-solid" required=""/>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                 <button type="reset" class="btn btn-white btn-active-light-primary me-2">Discard</button>
+                                 <button type="submit" class="btn btn-primary" id="kt_account_basic_info_submit">Save Changes</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                     <div class="card" id="kt_account_settings_deactivate" data-kt-scroll-offset="{default: 100, md: 125}">
+                        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_deactivate" aria-expanded="true" aria-controls="kt_account_deactivate">
+                           <div class="card-title m-0">
+                              <h3 class="fw-boldest m-0">Delete Monitor</h3>
+                           </div>
+                        </div>
+                        <div id="kt_account_deactivate" class="collapse show">
+                           <form method="POST" action="/monitors/delete/<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].pointID%>">
+                              <div class="card-body border-top p-9">
+                                 <div class="form-check form-check-solid fv-row">
+                                    <input autocomplete="off" name="checkbox" class="form-check-input" type="checkbox" value="" id="checkbox" required="" disabled="" checked="" />
+                                    <label class="form-check-label fw-bold ps-2 fs-6" for="checkbox">Confirm Delete Monitor</label>
+                                 </div>
+                              </div>
+                              <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                 <button onclick="window.location.href='/monitors/delete/<%=ly.fetch("linkler").filter(x => x.pointID == link)[0].pointID%>'" type="submit" class="btn btn-danger fw-bold">Delete</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+<%- include('parts/footer', {bot, user, path}) %>
+   </body>
+</html>

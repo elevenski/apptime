@@ -1,0 +1,431 @@
+<div id="kt_aside" class="aside aside-default bg-white aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
+    <div class="aside-logo flex-column-auto pt-9 pb-5" id="kt_aside_logo">
+       <a href="/">
+       <img draggable="false" width="220" alt="Logo" src="https://i.ibb.co/HptRZvB/Apptime-new-Branding-delta-grow.png" class="max-h-50px logo-default" />
+       <img draggable="false" alt="Logo" src="https://i.ibb.co/HptRZvB/Apptime-new-Branding-delta-grow.png" class="max-h-50px logo-minimize" />
+       </a>
+    </div>
+    <div class="aside-menu flex-column-fluid">
+       <div class="menu menu-column menu-fit menu-rounded menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
+          <div class="menu-fit hover-scroll-y me-lg-n5 pe-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="20px" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer">
+             <div class="menu-item">
+                <div class="menu-content">
+                   <span class="fw-bold text-muted text-uppercase fs-7">General</span>
+                </div>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/account">
+                <span class="menu-icon">
+                <i class="fa fa-user"></i>
+								</span>
+                <span class="menu-title">Account</span>
+                </span>
+                </a>
+             </div>
+             <% if(bot.admin.includes(user.id) === true) { %>
+             <div class="menu-item">
+                <a class="menu-link" href="/admin/panel">
+                <span class="menu-icon">
+                <i class="fa fa-tools"></i>
+								</span>
+                <span class="menu-title">Admin Panel</span>
+                </span>
+                </a>
+             </div>
+             <% } %>
+             <div class="menu-item">
+                <a class="menu-link" href="/dashboard">
+                <span class="menu-icon">
+                <i class="fa fa-tachometer-fast"></i>
+								</span>
+                <span class="menu-title">Dashboard</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/monitors">
+                <span class="menu-icon">
+                <i class="fa fa-bars"></i>
+								</span>
+                <span class="menu-title">Monitors</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn">
+                <span class="menu-icon">
+                <i class="fa fa-hand-holding-heart"></i>
+								</span>
+                <span class="menu-title">Share & Earn</span>
+                </span>
+                </a>
+             </div>
+             <br>
+             <div class="menu-item">
+                <div class="menu-content">
+                   <span class="fw-bold text-muted text-uppercase fs-7">Quick Menu</span>
+                </div>
+             </div>
+             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+									<span class="menu-link">
+                    <span class="menu-icon">
+                    <i class="fa fa-ellipsis-h"></i>
+								    </span>
+										<span class="menu-title">Monitors</span>
+										<span class="menu-arrow"></span>
+									</span>
+									<div class="menu-sub menu-sub-accordion">
+<%if(ly.fetch("linkler").filter(x => x.owner === user.id)) {%>
+<%if(ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[1]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[2]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[3]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[4]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[5]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[6]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[7]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[8]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).name ||"-error-"%></span>
+</a>
+</div>
+<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[9]) {%>
+<div class="menu-item">
+<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).pointID ||"#-error-"%>">
+<span class="menu-bullet">
+<span class="bullet bullet-dot"></span>
+</span>
+<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).name ||"-error-"%></span>
+</a>
+</div>
+<%}%>
+<%}%>
+<%if(!ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<div class="menu-item">
+<a class="menu-link">
+<span class="menu-title">You don't have any Monitors.</span>
+</a>
+</div>
+<%}%>
+
+									</div>
+								</div>
+             <br>
+             <div class="menu-item">
+                <div class="menu-content">
+                   <span class="fw-bold text-muted text-uppercase fs-7">Company</span>
+                </div>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/about">
+                <span class="menu-icon">
+                <i class="fa fa-books"></i>
+								</span>
+                <span class="menu-title">About</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/bot/invite" target="_blank">
+                <span class="menu-icon">
+                <i class="fa fa-plus"></i>
+								</span>
+                <span class="menu-title">Add Discord Bot</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="https://desktop.apptime.tech" target="_blank">
+                <span class="menu-icon">
+                <i class="fa fa-desktop"></i>
+								</span>
+                <span class="menu-title">Apptime Desktop &nbsp;<span class="badge badge-light-danger">NEW</span></span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/branding">
+                <span class="menu-icon">
+                <i class="fa fa-bookmark"></i>
+								</span>
+                <span class="menu-title">Branding</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/changelog">
+                <span class="menu-icon">
+                <i class="fa fa-code-branch"></i>
+								</span>
+                <span class="menu-title">Changelog</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/partners">
+                <span class="menu-icon">
+                <i class="fa fa-handshake"></i>
+								</span>
+                <span class="menu-title">Partners</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/#pricing">
+                <span class="menu-icon">
+                <i class="fa fa-hand-holding-usd"></i>
+								</span>
+                <span class="menu-title">Pricing</span>
+                </span>
+                </a>
+             </div>
+             <div class="menu-item">
+                <a class="menu-link" href="/status">
+                <span class="menu-icon">
+                <i class="fa fa-compass"></i>
+								</span>
+                <span class="menu-title">Status <%if(bot.ping > 300) {%><span style="margin-left:7px" class="dnd" data-bs-toggle="tooltip" title="Low Performance"></span><% } else { %><span style="margin-left:7px" class="online" data-bs-toggle="tooltip" title="Operational"></span><% } %></span>
+                </span>
+                </a>
+             </div>
+             <br>
+             <center><span class="text-muted text-uppercase" rel="nofollow" target="_blank" style="font-size:12px">Dashboard: v4 <% if(ly.fetch(`beta.${user.id}.status`)) { %>Beta<% } %></span></center>
+          </div>
+       </div>
+    </div>
+    <div class="aside-footer flex-column-auto" id="kt_aside_footer"></div>
+ </div>
+ <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+    <div id="kt_header" class="header">
+       <div class="container-fluid d-flex align-items-stretch justify-content-between">
+          <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+             <a href="/" class="d-lg-none">
+             <img draggable="false" alt="Logo" src="https://i.ibb.co/dk6Fwdd/Apptime-new-Branding-dot.png" class="mh-40px" />
+             </a>
+             <div class="d-flex align-items-center d-lg-none ms-1 ms-lg-3">
+                 <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_aside_toggle">
+                    <span class="svg-icon svg-icon-2x">
+                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                             <rect x="0" y="0" width="24" height="24" />
+                             <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+                             <path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z" fill="#000000" opacity="0.3" />
+                          </g>
+                       </svg>
+                    </span>
+                 </div>
+              </div>
+          </div>
+          <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+             <div class="d-flex align-items-stretch">
+             </div>
+             <div class="d-flex align-items-stretch flex-shrink-0">
+                <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                <% if(!ly.fetch(`verify.${user.id}`)) { %>
+                   <sp data-bs-toggle="tooltip" title="Please Verify Yourself" style="margin-right:20px;cursor:pointer" class="text-danger"><i data-bs-toggle="modal" data-bs-target="#kt_modal_verify" style="font-size:20px;color:#f1416c" class="fas fa-exclamation-circle"></i></sp>
+                   <% } %>
+                   <button style="margin-right:22px" class="btn btn-light fw-boldest px-6" data-bs-toggle="modal" data-bs-target="#kt_modal_create_api_key">New Monitor</button>
+                   <div class="cursor-pointer symbol symbol-40px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
+                      <img onclick="location.href='/account'" alt="Pic" style="object-fit: cover" draggable="false" src="<%=ly.fetch(`account.${user.id}.avatar`) || "https://i.ibb.co/8mXdWsM/user2.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/8mXdWsM/user2.png'" />
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+
+
+
+
+
+    <div class="modal fade" id="kt_modal_create_api_key" tabindex="-1" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered mw-650px">
+                             <div class="modal-content">
+                                 <div class="modal-header" id="kt_modal_create_api_key_header">
+                                     <h3 class="fw-boldest text-dark fs-1 mb-0">New Monitor</h3>
+                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                         <span class="svg-icon svg-icon-2x">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                 <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M2.36899 6.54184C2.65912 4.34504 4.34504 2.65912 6.54184 2.36899C8.05208 2.16953 9.94127 2 12 2C14.0587 2 15.9479 2.16953 17.4582 2.36899C19.655 2.65912 21.3409 4.34504 21.631 6.54184C21.8305 8.05208 22 9.94127 22 12C22 14.0587 21.8305 15.9479 21.631 17.4582C21.3409 19.655 19.655 21.3409 17.4582 21.631C15.9479 21.8305 14.0587 22 12 22C9.94127 22 8.05208 21.8305 6.54184 21.631C4.34504 21.3409 2.65912 19.655 2.36899 17.4582C2.16953 15.9479 2 14.0587 2 12C2 9.94127 2.16953 8.05208 2.36899 6.54184Z" fill="#12131A" />
+                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" fill="#12131A" />
+                                             </svg>
+                                         </span>
+                                     </div>
+                                 </div>
+                                 <% if(!ly.fetch(`verify.${user.id}`)) { %>
+                                <div class="modal-body py-10 px-lg-17">
+                                 Please Verify Yourself<br>* To complete the verification, click the exclamation mark in the top right and take the necessary actions.
+                                </div>
+                                 <% } else { %>
+                                 <form method="POST" action="/monitors/new">
+                                     <div class="modal-body py-10 px-lg-17">
+                                         <div class="scroll-y me-n7 pe-7" id="kt_modal_create_api_key_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_create_api_key_header" data-kt-scroll-wrappers="#kt_modal_create_api_key_scroll" data-kt-scroll-offset="300px">
+                                             <div class="mb-5 fv-row">
+                                                 <label class="required fs-5 fw-bold mb-2">Name</label>
+                                                 <input autocomplete="off" type="text" minLength="4" maxLength="25" name="linkname" id="linkname" placeholder="Asuna" class="form-control form-control-lg form-control-solid" required="" />
+                                             </div>
+                                             <div class="mb-5 fv-row">
+                                                <label class="fs-5 fw-bold mb-2">Image</label>
+                                                <input autocomplete="off" type="url" name="linkimage" id="linkimage" placeholder="https://i.imgur.com/123" class="form-control form-control-lg form-control-solid" />
+                                            </div>
+                                            <div class="mb-5 fv-row">
+                                                <label class="required fs-5 fw-bold mb-2">URL</label>
+                                                <input autocomplete="off" type="url" name="link" id="link" placeholder="https://" class="form-control form-control-lg form-control-solid" required=""/>
+                                            </div>
+                                         </div>
+                                     </div>
+                                     <div class="modal-footer px-lg-17 flex-right">
+                                         <button type="reset" id="kt_modal_create_api_key_cancel" class="btn btn-white btn-active-light-primary me-2">Discard</button>
+                                         <button type="submit" id="kt_modal_create_api_key_submit" class="btn btn-primary">
+                                             <span class="indicator-label">Submit</span>
+                                         </button>
+                                     </div>
+                                 </form>
+                                 <% } %>
+                             </div>
+                         </div>
+                     </div>
+
+
+
+
+
+
+                     <div class="modal fade" id="kt_modal_share_earn" tabindex="-1" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered mw-800px">
+										<div class="modal-content">
+											<div class="modal-header pb-0 border-0 justify-content-end">
+												<div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+													<span class="svg-icon svg-icon-2x">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M2.36899 6.54184C2.65912 4.34504 4.34504 2.65912 6.54184 2.36899C8.05208 2.16953 9.94127 2 12 2C14.0587 2 15.9479 2.16953 17.4582 2.36899C19.655 2.65912 21.3409 4.34504 21.631 6.54184C21.8305 8.05208 22 9.94127 22 12C22 14.0587 21.8305 15.9479 21.631 17.4582C21.3409 19.655 19.655 21.3409 17.4582 21.631C15.9479 21.8305 14.0587 22 12 22C9.94127 22 8.05208 21.8305 6.54184 21.631C4.34504 21.3409 2.65912 19.655 2.36899 17.4582C2.16953 15.9479 2 14.0587 2 12C2 9.94127 2.16953 8.05208 2.36899 6.54184Z" fill="#12131A" />
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" fill="#12131A" />
+														</svg>
+													</span>
+												</div>
+											</div>
+											<div class="modal-body scroll-y pt-0 pb-15">
+												<div class="mw-lg-600px mx-auto">
+													<div class="mb-15 text-center">
+														<h3 class="fw-boldest text-dark fs-2x">Share &amp; Earn</h3>
+                            <div class="text-gray-400 fw-bold fs-3">Your referral link has been used <ts style="color:#0067f4"><%= ly.fetch(`ref.${user.id}`) || "0" %></ts> time so far.</div>
+													</div>
+													<div class="mb-10">
+														<h4 class="fs-5 fw-bold text-gray-800">Referral Link</h4>
+															<input type="text" class="form-control form-control-solid me-3 flex-grow-1" value="https://www.apptime.tech/ref/<%=user.id%>" disabled=""/>
+													</div>
+													<div class="d-flex">
+                            <a class="btn btn-light-white w-100">Share to Platforms:</a>
+														<a href="https://www.facebook.com/sharer/sharer.php?quote=My%20refferal%20link%20for%20Apptime&u=https%3A%2F%2Fwww.apptime.tech%2Fref%2F354343248698802187" target="_blank" class="btn btn-icon btn-facebook mx-6 w-100">
+														<i class="fab fa-facebook-f fs-5 me-3"></i>Facebook</a>
+														<a href="https://twitter.com/intent/tweet?=original_referer=https://www.apptime.tech/ref/<%=user.id%>&text=My refferal link for Apptime&url=https://www.apptime.tech/ref/<%=user.id%>" target="_blank" class="btn btn-icon btn-twitter w-100">
+														<i class="fab fa-twitter fs-5 me-3"></i>Twitter</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+                <div class="modal fade" id="kt_modal_verify" tabindex="-1" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered mw-800px">
+										<div class="modal-content">
+											<div class="modal-header pb-0 border-0 justify-content-end">
+												<div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+													<span class="svg-icon svg-icon-2x">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M2.36899 6.54184C2.65912 4.34504 4.34504 2.65912 6.54184 2.36899C8.05208 2.16953 9.94127 2 12 2C14.0587 2 15.9479 2.16953 17.4582 2.36899C19.655 2.65912 21.3409 4.34504 21.631 6.54184C21.8305 8.05208 22 9.94127 22 12C22 14.0587 21.8305 15.9479 21.631 17.4582C21.3409 19.655 19.655 21.3409 17.4582 21.631C15.9479 21.8305 14.0587 22 12 22C9.94127 22 8.05208 21.8305 6.54184 21.631C4.34504 21.3409 2.65912 19.655 2.36899 17.4582C2.16953 15.9479 2 14.0587 2 12C2 9.94127 2.16953 8.05208 2.36899 6.54184Z" fill="#12131A" />
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" fill="#12131A" />
+														</svg>
+													</span>
+												</div>
+											</div>
+											<div class="modal-body scroll-y pt-0">
+												<div class="mw-lg-600px mx-auto">
+													<div class="mb-6 text-center">
+                          <form method="POST" action="/account/verify">
+														<h3 class="fw-boldest text-dark fs-2x">User Verify</h3>
+                            <div class="text-gray-400 fw-bold fs-3">Please Verify yourself to perform General Transactions. <br><br>
+                            <div class="captcha">
+                            <div class="h-captcha" data-sitekey="hCaptcha_SITEKEY" data-callback="removeFakeCaptcha"></div>
+                            <input type="checkbox" class="captcha-fake-field" tabindex="-1" required>
+                            </div>
+                            <button type="submit" class="mt-1 btn btn-primary">Verify</button></div>
+													</div>
+                          </form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
