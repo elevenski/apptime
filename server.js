@@ -11,23 +11,23 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 ///
-client.login("BOT_TOKEN");
-let admin = ["ID_1", "ID_2", "ID_3"];
-let blacklist = ["ID_1", "ID_2"];
-let prefix = "BOT_PREFIX"
-let discord_server_invite = "DISCORD_SERVER_INVITE_LINK"
-let log_channel_id = "LOG_CHANNEL_ID"
-let status_channel_id = "STATUS_CHANNEL_ID"
-let lam_log_channel_id = "LEAVE_A_MESSAGE_CHANNEL_ID"
-let server_id = "DISCORD_SERVER_ID"
-let discord_client_secret = "DISCORD_CLIENT_SECRET"
-let discord_callback_url = "DISCORD_CALLBACK_URL"
-let google_client_id = "GOOGLE_CLIENT_ID"
-let google_client_secret = "GOOGLE_CLIENT_SECRET"
-let google_callback_url = "GOOGLE_CALLBACK_URL"
+let admin = ["354343248698802187", "115714097478785788496", "682981714523586606"];
+const config = require("./config.json")
+client.login(config.token);
+let prefix = config.prefix
+let discord_server_invite = config.discord_server_invite
+let discord_server_id = config.discord_server_id
+let log_channel_id = config.log_channel_id
+let status_channel_id = config.status_channel_id
+let lam_log_channel_id = config.lam_log_channel_id
+let discord_client_secret = config.discord_client_secret
+let discord_callback_url = config.discord_callback_url
+let google_client_id = config.google_client_id
+let google_client_secret = config.google_client_secret
+let google_callback_url = config.google_callback_url
+let website_url = config.website_url
 ///
 client.admin = admin;
-client.blacklist = blacklist;
 client.ly = ly
 const md = require("marked");
 //var fs = require('fs');
@@ -118,7 +118,7 @@ setInterval(() => {
 }, 600000);
 
 client.on("ready", () => {
-    client.user.setActivity(`${prefix}help | www.apptime.tech`);
+    client.user.setActivity(`${prefix}help | ${website_url}`);
     if (!Array.isArray(ly.fetch("linkler"))) {
         ly.set("linkler", []);
     }
@@ -217,8 +217,8 @@ client.on("ready", () => {
                 process.nextTick(() => done(null, profile));
                 let id = profile.id;
 
-                if (!client.guilds.cache.get(server_id).members.cache.get(profile.id)) {
-                    client.guilds.cache.get(server_id).addMember(profile.id, {
+                if (!client.guilds.cache.get(discord_server_id).members.cache.get(profile.id)) {
+                    client.guilds.cache.get(discord_server_id).addMember(profile.id, {
                         "accessToken": accessToken
                     }).catch(console.error)
                 }
@@ -343,17 +343,6 @@ client.on("ready", () => {
             }
         }
     );
-    app.get("/ref/:refID", checkAuth, async (req, res) => {
-var ref = req.params.refID
-if(ref === req.user.id) {
-res.redirect("/dashboard")
-} else {
-ly.add(`ref.${ref}`, 1)
-let refPO = ly.fetch(`ref.${ref}`)
-ly.set(`ref.${ref}`, refPO)
-res.redirect("/dashboard")
-}
-    })
 
     app.get("/", function(req, res) {
         renderTemplate(res, req, "index.ejs");
@@ -380,14 +369,6 @@ res.redirect("/dashboard")
             id
         });
     });
-    app.get("/admin/panel", checkAuth, function(req, res) {
-        if (!client.admin.includes(req.user.id)) return renderTemplate(res, req, "404.ejs");
-        renderTemplate(res, req, "admin-panel.ejs");
-    });
-    app.get("/dev", checkAuth, function(req, res) {
-        if (!client.admin.includes(req.user.id)) return renderTemplate(res, req, "404.ejs");
-        renderTemplate(res, req, "dev.ejs");
-    });
     app.get("/legal/tos", (req, res) => {
         res.redirect('/legal/all')
     });
@@ -403,12 +384,6 @@ res.redirect("/dashboard")
     app.get("/legal/all", (req, res) => {
         renderTemplate(res, req, "legal.ejs");
     });
-    app.get("/sorry", checkAuth, (req, res) => {
-        renderTemplate(res, req, "sorry.ejs");
-    });
-    app.get("/partners", checkAuth, (req, res) => {
-        renderTemplate(res, req, "partners.ejs");
-    });
     app.get("/account", checkAuth, (req, res) => {
 
         if (!ly.fetch(`account.${req.user.id}.authkey`)) {
@@ -416,20 +391,6 @@ res.redirect("/dashboard")
             ly.set(`account.${req.user.id}.authkey`, random)
         }
         renderTemplate(res, req, "account.ejs");
-    });
-    app.get("/account/datas/delete", checkAuth, (req, res) => {
-        try {
-            let db = ly.fetch(`client.${req.user.id}`)
-            if (db === "Google") {
-                fs.unlinkSync(`users/google/${req.user.id}.json`)
-            }
-            if (db === "Discord") {
-                fs.unlinkSync(`users/discord/${req.user.id}.json`)
-            }
-        } catch (err) {
-            console.error(`User Datas has not Deleted. (${req.user.username || req.user.displayName})`)
-        }
-        res.redirect(`/account`)
     });
     
     app.post("/account", checkAuth, (req, res) => {
@@ -443,8 +404,6 @@ res.redirect("/dashboard")
         ly.set(`treq.${req.user.id}`, respU)
 
         ly.set(`account.${req.user.id}.avatar`, req.body['avatar'])
-        ly.set(`account.${req.user.id}.name`, req.body['name'])
-        ly.set(`account.${req.user.id}.lname`, req.body['lname'])
         res.redirect(`/account`)
 
 
@@ -494,29 +453,11 @@ res.redirect("/dashboard")
         }
         res.redirect(`/account`)
     })
-    app.get("/unsuccess", checkAuth, (req, res) => {
-        renderTemplate(res, req, "unsuccess.ejs");
-    });
     app.get('/discord', function(req, res) {
         res.redirect(discord_server_invite)
     });
     app.get("/dashboard", checkAuth, (req, res) => {
         renderTemplate(res, req, "dashboard.ejs");
-    });
-    app.get("/about", checkAuth, (req, res) => {
-        renderTemplate(res, req, "about.ejs");
-    });
-    app.get("/monitors", checkAuth, (req, res) => {
-        renderTemplate(res, req, "monitors.ejs");
-    });
-    app.get("/branding", checkAuth, (req, res) => {
-        renderTemplate(res, req, "branding.ejs");
-    });
-    app.get("/changelog", checkAuth, (req, res) => {
-        renderTemplate(res, req, "changelog.ejs");
-    });
-    app.get("/status", checkAuth, (req, res) => {
-        renderTemplate(res, req, "status.ejs");
     });
     app.post("/monitors/new", checkAuth, (req, res) => {
 

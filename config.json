@@ -1,0 +1,15 @@
+{
+  "token": "DISCORD_BOT_TOKEN",
+  "prefix": "DISCORD_BOT_PREFIX",
+  "discord_server_invite": "DISCORD_SERVER_INVITE",
+  "discord_server_id": "DISCORD_SERVER_ID",
+  "log_channel_id": "DISCORD_LOG_CHANNEL_ID",
+  "status_channel_id": "DISCORD_STATUS_LOG_CHANNEL_ID",
+  "lam_log_channel_id": "DISCORD_LEAVEAMESSAGE_LOG_CHANNEL_ID",
+  "discord_client_secret": "DISCORD_CLIENT_SECRET",
+  "discord_callback_url": "https://www.yourdomain.com/auth/discord/callback",
+  "google_client_id": "GOOGLE_CLIENT_ID",
+  "google_client_secret": "GOOGLE_CLIENT_SECRET",
+  "google_callback_url": "https://www.yourdomain.com/auth/google/callback",
+  "website_url": "https://your.domain.com"
+}
