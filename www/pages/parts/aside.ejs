@@ -168,9 +168,6 @@
           </div>
              <div class="d-flex align-items-stretch flex-shrink-0">
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-                <% if(!ly.fetch(`verify.${user.id}`)) { %>
-                <button data-bs-toggle="tooltip" title="Please Verify Yourself" class="btn btn-active-color-primary fw-boldest px-6"><i data-bs-toggle="modal" data-bs-target="#kt_modal_verify" style="font-size:20px;color:#f1416c" class="fas fa-exclamation-circle"></i></button>
-                <% } %>
                 <a href="/account"><button class="btn btn-active-color-primary fw-boldest px-6 no-pc">Account</button></a>
                 <a href="/dashboard"><button class="btn btn-active-color-primary fw-boldest px-6 no-pc">Dashboard</button></a>
                 <a href="/bot/invite" target="_blank"><button class="btn btn-active-color-primary fw-boldest px-6 no-pc">Discord Bot</button></a>
@@ -203,11 +200,6 @@
                                          </span>
                                      </div>
                                  </div>
-                                 <% if(!ly.fetch(`verify.${user.id}`)) { %>
-                                <div class="modal-body py-10 px-lg-17">
-                                 Please Verify Yourself<br>* To complete the verification, click the exclamation mark in the top right and take the necessary actions.
-                                </div>
-                                 <% } else { %>
                                  <form method="POST" action="/monitors/new">
                                      <div class="modal-body py-10 px-lg-17">
                                          <div class="scroll-y me-n7 pe-7" id="kt_modal_create_api_key_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_create_api_key_header" data-kt-scroll-wrappers="#kt_modal_create_api_key_scroll" data-kt-scroll-offset="300px">
@@ -232,7 +224,6 @@
                                          </button>
                                      </div>
                                  </form>
-                                 <% } %>
                              </div>
                          </div>
                      </div>
@@ -250,21 +241,6 @@
 															<path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" fill="#12131A" />
 														</svg>
 													</span>
-												</div>
-											</div>
-											<div class="modal-body scroll-y pt-0">
-												<div class="mw-lg-600px mx-auto">
-													<div class="mb-6 text-center">
-                          <form method="POST" action="/account/verify">
-														<h3 class="fw-boldest text-dark fs-2x">User Verify</h3>
-                            <div class="text-gray-400 fw-bold fs-3">Please Verify yourself to perform General Transactions. <br><br>
-                            <div class="captcha">
-                            <div class="h-captcha" data-sitekey="8a83ac4f-170c-4871-be25-fe78b906c24a" data-callback="removeFakeCaptcha"></div>
-                            <input type="checkbox" class="captcha-fake-field" tabindex="-1" required>
-                            </div>
-                            <button type="submit" class="mt-1 btn btn-primary">Verify</button></div>
-													</div>
-                          </form>
 												</div>
 											</div>
 										</div>

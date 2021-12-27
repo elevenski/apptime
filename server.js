@@ -10,6 +10,7 @@ const fss = require('fs-extra');
 const express = require("express");
 const app = express();
 const helmet = require("helmet");
+var uuid = require("uuid");
 ///
 let admin = ["354343248698802187", "115714097478785788496", "682981714523586606"];
 const config = require("./config.json")
@@ -353,22 +354,6 @@ client.on("ready", () => {
       }
         renderTemplate(res, req, "connect.ejs");
     });
-    var uuid = require("uuid");
-    app.get("/pick_eggs/countdown.auth", checkAuth, function(req, res) {
-        let random = uuid.v4();
-        ly.set(`countdown.${req.user.id}`, random)
-        let string = ly.fetch(`countdown.${req.user.id}`)
-        res.redirect(`countdown.${string}`)
-    });
-    app.get("/pick_eggs/countdown.:uuID", checkAuth, function(req, res) {
-        var id = req.params.uuID
-        if (ly.has(`countdown`)) {
-            if (Object.keys(ly.fetch(`countdown.${req.user.id}`)).includes(id) === false) return renderTemplate(res, req, '404.ejs')
-        }
-        renderTemplate(res, req, "pick_eggs/countdown.ejs", {
-            id
-        });
-    });
     app.get("/legal/tos", (req, res) => {
         res.redirect('/legal/all')
     });
@@ -405,21 +390,6 @@ client.on("ready", () => {
 
         ly.set(`account.${req.user.id}.avatar`, req.body['avatar'])
         res.redirect(`/account`)
-
-
-    })
-    app.post("/account/verify", checkAuth, (req, res) => {
-
-      ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
-
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
-
-      ly.set(`verify.${req.user.id}`, 1)
-      res.redirect("/dashboard")
 
 
     })
