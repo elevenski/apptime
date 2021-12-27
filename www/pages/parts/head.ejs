@@ -36,7 +36,6 @@
       <script src="/js/landing/main.js"></script>
 
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-IIED/eyOkM6ihtOiQsX2zizxFBphgnv1zbe1bKA+njdFzkr6cDNy16jfIKWu4FNH" crossorigin="anonymous" />   
-      <script src="https://hcaptcha.com/1/api.js" async defer></script> 
    </head>
    <body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_account_settings" data-bs-offset="200" data-bs-target-offset="175" class="position-relative page-loading-enabled page-loading toolbar-enabled aside-fixed aside-default-enabled">
       <div class="preloader">
@@ -107,32 +106,7 @@ button.addEventListener("click", function() {
     }, 3000);
 });
 </script>
-
-<script>
-const form = document.forms.demo;
-const checked = form.querySelector('input[name=type]:checked');
-console.log(checked.value);
-</script>
-<script>
-window.removeFakeCaptcha = function() {
-   document.querySelector('.captcha-fake-field').remove();
-}
-</script>
 <style>
-.captcha {
-  position: relative;
-}
-.captcha-fake-field {
-  background: transparent;
-  bottom: 0;
-  border: none;
-  display: block;
-  height: 1px;
-  left: 12px;
-  width: 1px;
-  position: absolute;
-  z-index: -1;
-}
 .menu-arrow:after, .menu-arrow:hover {
 color: #0067f4
 }
