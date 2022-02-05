@@ -9,7 +9,7 @@
 `EJS`, `JavaScript` & `CSS`
 
 ## Contributors
-Thanks for contributions: `cenapyuce`
+Thanks for contributions: `cenapyuce`, `lyertia`
 
 ## Installation
 - npm i
