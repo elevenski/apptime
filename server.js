@@ -1,5 +1,5 @@
 const moment = require("moment")
-const ly = require("wio.db")
+const db = require("wio.db")
 const discord = require("discord.js");
 const client = new discord.Client({
     disableEveryone: true
@@ -29,7 +29,7 @@ let google_callback_url = config.google_callback_url
 let website_url = config.website_url
 ///
 client.admin = admin;
-client.ly = ly
+client.db = db
 const md = require("marked");
 //var fs = require('fs');
 var fsPath = require('fs-path');
@@ -61,7 +61,7 @@ function logErrors(err, req, res, next) {
 
 }
 
-const arr = ly.fetch("linkler")
+const arr = db.fetch("linkler")
 
 
     app.use(function(err, req, res, next) {
@@ -94,7 +94,7 @@ passport.deserializeUser((obj, done) => {
 });
 
 setInterval(() => {
-    var links = ly.fetch("linkler");
+    var links = db.fetch("linkler");
     if (!links) return;
     var linkA = links.map(c => c.url);
     linkA.forEach(link => {
@@ -120,8 +120,8 @@ setInterval(() => {
 
 client.on("ready", () => {
     client.user.setActivity(`${prefix}help | ${website_url}`);
-    if (!Array.isArray(ly.fetch("linkler"))) {
-        ly.set("linkler", []);
+    if (!Array.isArray(db.fetch("linkler"))) {
+        db.set("linkler", []);
     }
 });
 
@@ -175,9 +175,9 @@ client.on("ready", () => {
         }),
         function(req, res) {
             res.redirect('/dashboard');
-            ly.add('logins', 1)
-            ly.add(`logins.${req.user.id}`, 1)
-            ly.set(`client.${req.user.id}`, "Google")
+            db.add('logins', 1)
+            db.add(`logins.${req.user.id}`, 1)
+            db.set(`client.${req.user.id}`, "Google")
             const email = req.user.emails[0].value
 
             if (!client.admin.includes(req.user.id) === true) {
@@ -239,7 +239,7 @@ client.on("ready", () => {
     app.use(passport.session());
     let linkss;
     app.use(helmet());
-    let links = ly.fetch("linkler");
+    let links = db.fetch("linkler");
     let sahipp;
     var linkA = links.map(c => c.url);
     var sahip = links.map(c => c.owner);
@@ -254,7 +254,7 @@ client.on("ready", () => {
         const baseData = {
             bot: client,
             path: req.path,
-            ly: ly,
+            db: db,
             user: req.isAuthenticated() ? req.user : null,
             saat: `${moment().locale('tr').format('LLL')}`,
             linkss: linkss,
@@ -312,9 +312,9 @@ client.on("ready", () => {
                     req.logout();
                 }
                 res.redirect("/dashboard");
-                ly.add('logins', 1)
-                ly.add(`logins.${req.user.id}`, 1)
-                ly.set(`client.${req.user.id}`, "Discord")
+                db.add('logins', 1)
+                db.add(`logins.${req.user.id}`, 1)
+                db.set(`client.${req.user.id}`, "Discord")
             }
             const email = req.user.email
 
@@ -371,55 +371,55 @@ client.on("ready", () => {
     });
     app.get("/account", checkAuth, (req, res) => {
 
-        if (!ly.fetch(`account.${req.user.id}.authkey`)) {
+        if (!db.fetch(`account.${req.user.id}.authkey`)) {
             let random = uuid.v4();
-            ly.set(`account.${req.user.id}.authkey`, random)
+            db.set(`account.${req.user.id}.authkey`, random)
         }
         renderTemplate(res, req, "account.ejs");
     });
     
     app.post("/account", checkAuth, (req, res) => {
 
-        ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
+        db.add(`treq`, 1)
+        let resp = db.fetch(`treq`)
+        db.set(`treq`, resp)
 
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
+        db.add(`treq.${req.user.id}`, 1)
+        let respU = db.fetch(`treq.${req.user.id}`)
+        db.set(`treq.${req.user.id}`, respU)
 
-        ly.set(`account.${req.user.id}.avatar`, req.body['avatar'])
+        db.set(`account.${req.user.id}.avatar`, req.body['avatar'])
         res.redirect(`/account`)
 
 
     })
     app.post("/leave_a_message", (req, res) => {
 
-      ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
+      db.add(`treq`, 1)
+        let resp = db.fetch(`treq`)
+        db.set(`treq`, resp)
 
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
+        db.add(`treq.${req.user.id}`, 1)
+        let respU = db.fetch(`treq.${req.user.id}`)
+        db.set(`treq.${req.user.id}`, respU)
 
         client.channels.cache.get(lam_log_channel_id).send(`__**Name:**__\n${req.body['lamname']}\n\n__**Email:**__\n${req.body['lamemail']}\n\n__**Message:**__\n${req.body['lammessage']}`)
     })
     app.get("/account/beta", checkAuth, (req, res) => {
-        if (!ly.fetch(`beta.${req.user.id}.status`)) {
-            ly.set(`beta.${req.user.id}.status`, 1)
+        if (!db.fetch(`beta.${req.user.id}.status`)) {
+            db.set(`beta.${req.user.id}.status`, 1)
         } else {
-            ly.delete(`beta.${req.user.id}.status`)
+            db.delete(`beta.${req.user.id}.status`)
         }
         res.redirect(`/account`)
     })
     app.get("/account/sync/avatar", checkAuth, (req, res) => {
-        let db = ly.fetch(`client.${req.user.id}`)
+        let db = db.fetch(`client.${req.user.id}`)
         if (db === "Google") {
-            ly.set(`account.${req.user.id}.avatar`, req.user.photos[0].value)
+            db.set(`account.${req.user.id}.avatar`, req.user.photos[0].value)
         } else {
         //if (db === "Discord") {
-            ly.set(`account.${req.user.id}.avatar`, `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}`)
+            db.set(`account.${req.user.id}.avatar`, `https://cdn.discordapp.com/avatars/${req.user.id}/${req.user.avatar}`)
         }
         res.redirect(`/account`)
     })
@@ -431,32 +431,32 @@ client.on("ready", () => {
     });
     app.post("/monitors/new", checkAuth, (req, res) => {
 
-      ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
+      db.add(`treq`, 1)
+        let resp = db.fetch(`treq`)
+        db.set(`treq`, resp)
 
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
+        db.add(`treq.${req.user.id}`, 1)
+        let respU = db.fetch(`treq.${req.user.id}`)
+        db.set(`treq.${req.user.id}`, respU)
         
         let ayar = req.body;
         let linkname = ayar["linkname"];
         let linkimage = ayar["linkimage"];
         let link = ayar["link"];
 
-        let sınır = ly.fetch(`user.${req.user.id}.sinir`) || 0
+        let sınır = db.fetch(`user.${req.user.id}.sinir`) || 0
         if (sınır < 10) {
             if (!ayar["linkname"]) return renderTemplate(res, req, "unsuccess.ejs");
             if (!ayar["link"]) return renderTemplate(res, req, "unsuccess.ejs");
 
-            if (ly.fetch("linkler").map(z => z.url).includes(link)) {
+            if (db.fetch("linkler").map(z => z.url).includes(link)) {
                 return renderTemplate(res, req, "unsuccess.ejs");
             } else {
 
-                ly.add(`pointID`, 1)
-                let pointID = ly.fetch(`pointID`)
-                ly.set(`links.${pointID}`, link)
-                ly.push("linkler", {
+                db.add(`pointID`, 1)
+                let pointID = db.fetch(`pointID`)
+                db.set(`links.${pointID}`, link)
+                db.push("linkler", {
                     name: linkname,
                     url: link,
                     image: linkimage,
@@ -467,11 +467,11 @@ client.on("ready", () => {
                     .setTitle("Monitor Added")
                     .setColor("GREEN")
                     .setThumbnail(linkimage || "https://i.ibb.co/HBJRCCq/quiestion-gray.png")
-                    .addField("User", `${req.user.username || req.user.displayName} (${ly.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${ly.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
+                    .addField("User", `${req.user.username || req.user.displayName} (${db.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${db.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
                     .addField("Name", linkname + " (" + pointID + ")")
                     .addField("URL", link)
                 client.channels.cache.get(log_channel_id).send(embed)
-                ly.add(`user.${req.user.id}.sinir`, 1)
+                db.add(`user.${req.user.id}.sinir`, 1)
 
                 return res.redirect(`/monitors/view/${pointID}`)
 
@@ -486,32 +486,32 @@ client.on("ready", () => {
 
         try {
 
-          ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
+          db.add(`treq`, 1)
+        let resp = db.fetch(`treq`)
+        db.set(`treq`, resp)
 
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
+        db.add(`treq.${req.user.id}`, 1)
+        let respU = db.fetch(`treq.${req.user.id}`)
+        db.set(`treq.${req.user.id}`, respU)
 
             var link = req.params.linkID
-            let linkasil = ly.fetch(`links.${link}`)
+            let linkasil = db.fetch(`links.${link}`)
 
-            if (ly.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
+            if (db.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
                 req.user.id) {
 
-                if (ly.has(`links`)) {
-                    if (Object.keys(ly.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
+                if (db.has(`links`)) {
+                    if (Object.keys(db.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
                 }
 
 
-                ly.set("linkler", ly.fetch("linkler").filter(x => x.url != linkasil))
-                ly.add(`user.${req.user.id}.sinir`, -1)
+                db.set("linkler", db.fetch("linkler").filter(x => x.url != linkasil))
+                db.add(`user.${req.user.id}.sinir`, -1)
 
                 const embed = new Discord.MessageEmbed()
                     .setTitle("Monitor Deleted")
                     .setColor("RED")
-                    .addField("User", `${req.user.username || req.user.displayName} (${ly.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${ly.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
+                    .addField("User", `${req.user.username || req.user.displayName} (${db.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${db.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
                     .addField("URL", linkasil + " (" + link + ")")
                 client.channels.cache.get(log_channel_id).send(embed)
 
@@ -537,29 +537,29 @@ client.on("ready", () => {
         let linkk = ayar["linkk"];
         try {
 
-          ly.add(`treq`, 1)
-        let resp = ly.fetch(`treq`)
-        ly.set(`treq`, resp)
+          db.add(`treq`, 1)
+        let resp = db.fetch(`treq`)
+        db.set(`treq`, resp)
 
-        ly.add(`treq.${req.user.id}`, 1)
-        let respU = ly.fetch(`treq.${req.user.id}`)
-        ly.set(`treq.${req.user.id}`, respU)
+        db.add(`treq.${req.user.id}`, 1)
+        let respU = db.fetch(`treq.${req.user.id}`)
+        db.set(`treq.${req.user.id}`, respU)
 
             var link = req.params.linkID
-            let linkasil = ly.fetch(`links.${link}`)
+            let linkasil = db.fetch(`links.${link}`)
 
-            if (ly.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
+            if (db.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
                 req.user.id) {
 
-                if (ly.has(`links`)) {
-                    if (Object.keys(ly.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
+                if (db.has(`links`)) {
+                    if (Object.keys(db.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
                 }
 
-                ly.set("linkler", ly.fetch("linkler").filter(x => x.url != linkasil))
-                ly.add(`pointID`, 1)
-                let pointID = ly.fetch(`pointID`)
-                ly.set(`links.${pointID}`, linkk)
-                ly.push("linkler", {
+                db.set("linkler", db.fetch("linkler").filter(x => x.url != linkasil))
+                db.add(`pointID`, 1)
+                let pointID = db.fetch(`pointID`)
+                db.set(`links.${pointID}`, linkk)
+                db.push("linkler", {
                     name: linkname,
                     url: linkk,
                     image: linkimage,
@@ -572,7 +572,7 @@ client.on("ready", () => {
                     .setTitle("Monitor Edited")
                     .setColor("#ffff20")
                     .setThumbnail(linkimage || "https://i.ibb.co/HBJRCCq/quiestion-gray.png")
-                    .addField("User", `${req.user.username || req.user.displayName} (${ly.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${ly.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
+                    .addField("User", `${req.user.username || req.user.displayName} (${db.fetch("linkler").filter(x => x.owner === req.user.id).length}/10) (${db.fetch(`client.${req.user.id}`) || "Discord"}-${req.user.id})`)
                     .addField("Name", linkname + " (" + pointID + ")")
                     .addField("URL", linkk)
                 client.channels.cache.get(log_channel_id).send(embed)
@@ -596,14 +596,14 @@ client.on("ready", () => {
 
 
             var link = req.params.linkID
-            let linkasil = ly.fetch(`links.${link}`)
-            let url = ly.fetch("linkler").filter(x => x.pointID == linkasil)[0]
+            let linkasil = db.fetch(`links.${link}`)
+            let url = db.fetch("linkler").filter(x => x.pointID == linkasil)[0]
 
-            if (ly.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
+            if (db.fetch("linkler").filter(x => x.url === linkasil)[0].owner ===
                 req.user.id) {
 
-                if (ly.has(`links`)) {
-                    if (Object.keys(ly.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
+                if (db.has(`links`)) {
+                    if (Object.keys(db.fetch(`links`)).includes(link) === false) return renderTemplate(res, req, '404.ejs')
                 }
 
 
@@ -651,14 +651,14 @@ fs.readdir('./commands/', (err, files) => {
     });
 });
 client.on('message', message => {
-    const ly = require("wio.db");
+    const db = require("wio.db");
     let talkedRecently = new Set();
-    if (talkedRecently.has(message.author.id)) {
+    if (talkedRecentdb.has(message.author.id)) {
         return;
     }
-    talkedRecently.add(message.author.id);
+    talkedRecentdb.add(message.author.id);
     setTimeout(() => {
-        talkedRecently.delete(message.author.id);
+        talkedRecentdb.delete(message.author.id);
     }, 2500);
     let client = message.client;
     if (message.author.bot) return;
