@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ly = require('wio.db')
 const os = require('os');
-const lyertia = require("wio.db")
 const db = require('wio.db')
 exports.run = async (client, message, args) => {
   
