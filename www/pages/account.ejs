@@ -24,26 +24,26 @@
                               
                                  <div class="d-flex flex-wrap">
                                     <div class="symbol symbol-125px mb-7 me-7 position-relative">
-                                       <img draggable="false" style="object-fit: cover" draggable="false" src="<%=ly.fetch(`account.${user.id}.avatar`) || "https://i.ibb.co/8mXdWsM/user2.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/8mXdWsM/user2.png'" alt="image" />
+                                       <img draggable="false" style="object-fit: cover" draggable="false" src="<%=db.fetch(`account.${user.id}.avatar`) || "https://i.ibb.co/8mXdWsM/user2.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/8mXdWsM/user2.png'" alt="image" />
                                     </div>
                                     <div class="d-flex flex-column">
                                        <div class="fs-2 fw-boldest mb-1"><%=user.username || user.displayName%>
                                 </div>
                                        <a style="pointer-events:none" class="mt-1 fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-fingerprint" style="margin-right:5px"></i> <%=user.id%></a>
                                        <a style="pointer-events:none" class="fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-at" style="margin-right:5px"></i> <%=user.email || user.emails[0].value || "local@apptime.tech"%></a>
-                                       <a style="pointer-events:none" class="fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-ethernet" style="margin-right:5px"></i> Connected via <%=ly.fetch(`client.${user.id}`) || "Discord"%></a>
+                                       <a style="pointer-events:none" class="fw-bold d-flex text-bold align-items-center text-gray-400 text-hover-primary mb-2"><i class="fa fa-ethernet" style="margin-right:5px"></i> Connected via <%=db.fetch(`client.${user.id}`) || "Discord"%></a>
                                     </div>
                                  </div>
                                  <div id="ob" class="ms-auto mb-7">
                                  <a href="/account/logout" class="btn btn-light-danger">Logout</a>
-                                 <% if(ly.fetch(`client.${user.id}`) === "Discord") {%>
+                                 <% if(db.fetch(`client.${user.id}`) === "Discord") {%>
                                  <a href="/auth/discord" class="btn btn-primary">Update Datas</a>
                                  <% } else { %>
                                  <a href="/auth/google" class="btn btn-primary">Update Datas</a>
                                  <% } %>
                                  </div>
                               </div>
-                                                <% if(ly.fetch(`beta.${user.id}.status`)) { %>
+                                                <% if(db.fetch(`beta.${user.id}.status`)) { %>
                      <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed rounded p-6">
                         <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -80,12 +80,12 @@
                                     <label class="col-lg-4 col-form-label fw-bold fs-6">Avatar</label>
                                     <div class="col-lg-8 fv-row">
                                     <div class="input-group">
-                                       <% if(!ly.fetch(`account.${user.id}.avatar`)) { %>
+                                       <% if(!db.fetch(`account.${user.id}.avatar`)) { %>
                                        <input autocomplete="off" type="url" name="avatar" id="avatar" class="form-control form-control-lg form-control-solid" placeholder="https://i.imgur.com/123" />
                                        <% } else {%>
-                                       <input autocomplete="off" type="url" name="avatar" id="avatar"class="form-control form-control-lg form-control-solid" placeholder="https://i.imgur.com/123" value="<%=ly.fetch(`account.${user.id}.avatar`)%>" />
+                                       <input autocomplete="off" type="url" name="avatar" id="avatar"class="form-control form-control-lg form-control-solid" placeholder="https://i.imgur.com/123" value="<%=db.fetch(`account.${user.id}.avatar`)%>" />
                                        <% } %>
-                                       <a role="button" onclick="window.location.href='/account/sync/avatar'" class="btn btn-light-primary">Sync with <%=ly.fetch(`client.${user.id}`) || "Discord"%></a>
+                                       <a role="button" onclick="window.location.href='/account/sync/avatar'" class="btn btn-light-primary">Sync with <%=db.fetch(`client.${user.id}`) || "Discord"%></a>
                                        </div>
                                     </div>
                                  </div>
@@ -94,14 +94,14 @@
                                     <span class="">Authorization Key</span>
                                     </label>
                                     <div class="col-lg-8 fv-row">
-                                       <input id="kt_clipboard_1" autocomplete="off" type="text" disabled="" class="form-control form-control-lg form-control-solid" placeholder="-error-" value="<%=ly.fetch(`account.${user.id}.authkey`) || "-error-"%>" />
+                                       <input id="kt_clipboard_1" autocomplete="off" type="text" disabled="" class="form-control form-control-lg form-control-solid" placeholder="-error-" value="<%=db.fetch(`account.${user.id}.authkey`) || "-error-"%>" />
                                     </div>
                                  </div>
                                  <div class="row mb-6">
                                     <label class="col-lg-4 col-form-label fw-bold fs-6">Beta Mode</label>
                                     <div class="col-lg-8 d-flex align-items-center">
                                        <div class="form-check form-check-solid form-switch fv-row">
-                                          <% if(!ly.fetch(`beta.${user.id}.status`)) { %>
+                                          <% if(!db.fetch(`beta.${user.id}.status`)) { %>
                                           <input onclick="window.location.href='/account/beta'" class="form-check-input w-45px h-30px" type="checkbox" id="allowmarketing" />
                                           <label class="form-check-label" for="allowmarketing"></label>
                                           <% } else { %>
