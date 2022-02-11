@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ly = require('wio.db');
+const db = require('wio.db');
 const moment = require('moment');
 exports.run = (client, message, args) => {
 try {
