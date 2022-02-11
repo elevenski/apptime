@@ -25,100 +25,100 @@
                     <span class="menu-arrow"></span>
                 </span>
                 <div class="menu-sub menu-sub-accordion">
-<%if(ly.fetch("linkler").filter(x => x.owner === user.id)) {%>
-<%if(ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<%if(db.fetch("linkler").filter(x => x.owner === user.id)) {%>
+<%if(db.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[0]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[0]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[0]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[1]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[1]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[1]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[1]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[1]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[2]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[2]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[2]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[2]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[2]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[3]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[3]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[3]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[3]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[3]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[4]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[4]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[4]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[4]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[4]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[5]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[5]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[5]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[5]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[5]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[6]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[6]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[6]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[6]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[6]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[7]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[7]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[7]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[7]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[7]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[8]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[8]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[8]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[8]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[8]).name ||"-error-"%></span>
 </a>
 </div>
-<%} if(ly.fetch("linkler").filter(x => x.owner === user.id)[9]) {%>
+<%} if(db.fetch("linkler").filter(x => x.owner === user.id)[9]) {%>
 <div class="menu-item">
-<a class="menu-link" href="/monitors/view/<%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).pointID ||"#-error-"%>">
+<a class="menu-link" href="/monitors/view/<%=(db.fetch("linkler").filter(x => x.owner === user.id)[9]).pointID ||"#-error-"%>">
 <span class="menu-bullet">
 <span class="bullet bullet-dot"></span>
 </span>
-<span class="menu-title"><%=(ly.fetch("linkler").filter(x => x.owner === user.id)[9]).name ||"-error-"%></span>
+<span class="menu-title"><%=(db.fetch("linkler").filter(x => x.owner === user.id)[9]).name ||"-error-"%></span>
 </a>
 </div>
 <%}%>
 <%}%>
-<%if(!ly.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
+<%if(!db.fetch("linkler").filter(x => x.owner === user.id)[0]) {%>
 <div class="menu-item">
 <a class="menu-link">
 <span class="menu-title">You don't have any Monitors.</span>
@@ -173,7 +173,7 @@
                 <a href="/bot/invite" target="_blank"><button class="btn btn-active-color-primary fw-boldest px-6 no-pc">Discord Bot</button></a>
                 <button style="margin-right:15px" class="btn btn-active-light-primary fw-boldest px-6" data-bs-toggle="modal" data-bs-target="#kt_modal_create_api_key">New Monitor</button>
                    <div class="cursor-pointer symbol symbol-40px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-                      <img onclick="location.href='/account'" alt="Pic" style="object-fit: cover" draggable="false" src="<%=ly.fetch(`account.${user.id}.avatar`) || "https://i.ibb.co/8mXdWsM/user2.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/8mXdWsM/user2.png'" />
+                      <img onclick="location.href='/account'" alt="Pic" style="object-fit: cover" draggable="false" src="<%=db.fetch(`account.${user.id}.avatar`) || "https://i.ibb.co/8mXdWsM/user2.png"%>?size=2048" onerror="this.onerror=null;this.src='https://i.ibb.co/8mXdWsM/user2.png'" />
                    </div>
                 </div>
              </div>
