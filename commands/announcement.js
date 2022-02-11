@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ly = require('wio.db');
+const db = require('wio.db');
 const moment = require('moment');
 exports.run = (client, message, args) => {
 try {
@@ -14,13 +14,13 @@ if(args[0] === "set") {
       var annasil = aciklama.replace('set ','');
       message.channel.send(annasil);
 
-    ly.set(`announcements.description`, annasil)
-    ly.set(`announcements.date`, moment().format('lll'))
+    db.set(`announcements.description`, annasil)
+    db.set(`announcements.date`, moment().format('lll'))
     message.channel.send("ok.")
 }
 
 if(args[0] === "current") {
-    message.channel.send(`__Content__\n${ly.fetch(`announcements.description`)}\n\n__Date__\n${ly.fetch(`announcements.date`)}`)
+    message.channel.send(`__Content__\n${db.fetch(`announcements.description`)}\n\n__Date__\n${db.fetch(`announcements.date`)}`)
 }
 
   } catch (e) {
