@@ -653,12 +653,12 @@ fs.readdir('./commands/', (err, files) => {
 client.on('message', message => {
     const db = require("wio.db");
     let talkedRecently = new Set();
-    if (talkedRecentdb.has(message.author.id)) {
+    if (talkedRecently.has(message.author.id)) {
         return;
     }
-    talkedRecentdb.add(message.author.id);
+    talkedRecently.add(message.author.id);
     setTimeout(() => {
-        talkedRecentdb.delete(message.author.id);
+        talkedRecently.delete(message.author.id);
     }, 2500);
     let client = message.client;
     if (message.author.bot) return;
