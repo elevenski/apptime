@@ -3,7 +3,7 @@
 </p>
 
 ## Description
-⚡ Advanced Open-source Free Monitoring Service. (not lastest version)
+⚡ Advanced FREE Website Monitoring Service. (Node.js & MongoDB) - Not lastest version of Apptime.
 
 ## Programming Languages
 `EJS`, `JavaScript` & `CSS`
