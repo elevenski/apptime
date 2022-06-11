@@ -2,10 +2,7 @@
   <img width="100" src="https://raw.githubusercontent.com/elevenvac/elevenvac/master/Eleven_icon_higer_florence.png" alt="Eleven Icon">
 </p>
 
-## Description
-⚡ Advanced FREE Website Monitoring Service. (Node.js & MongoDB) - Not lastest version of Apptime.
-
-## Programming Languages
+## Languages
 `EJS`, `JavaScript` & `CSS`
 
 ## Contributors
