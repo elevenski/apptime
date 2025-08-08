@@ -15,11 +15,6 @@
 - lyertia
 
 ### Discord Server
-<a href="https://discord.gg/uhwjhWryND">
-  <img src="http://invidget.switchblade.xyz/uhwjhWryND"/>
-</a>
-
-### License
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="BYNCSA40">
-  <img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png">
+<a href="https://discord.gg/SSMFDRvrYz">
+  <img src="http://invidget.switchblade.xyz/SSMFDRvrYz"/>
 </a>
